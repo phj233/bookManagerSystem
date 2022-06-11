@@ -2,8 +2,6 @@ package phj233;
 
 import javafx.application.Application;
 import javafx.application.Platform;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -15,7 +13,7 @@ import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import java.util.Optional;
 
-public class Main extends Application {
+public class Login extends Application {
     public static void main(String[] args) {
         Application.launch(args);
     }
@@ -53,7 +51,7 @@ public class Main extends Application {
         gr.add(login,1,2);
         GridPane.setMargin(login,new Insets(0,0,0,120));
 
-        BorderPane root = new BorderPane();
+//        BorderPane root = new BorderPane();
         Scene scene = new Scene(gr,400,250);
         stage.setScene(scene);
         stage.setResizable(false);
@@ -62,7 +60,7 @@ public class Main extends Application {
             Alert alert=new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("图书管理系统");
             alert.setHeaderText(null);
-            alert.setContentText("您是否退出系统？");
+            alert.setContentText("您是否退出登录？");
             Optional<ButtonType> result=alert.showAndWait();
             if (result.get()==ButtonType.OK){
                 Platform.exit();
@@ -77,8 +75,16 @@ public class Main extends Application {
             String passwd = (String) p_passwd.getUserData();
             if (name.equals(t_name.getText()) && passwd.equals(p_passwd.getText())){
                 System.out.println("success");
-            }else System.out.println("defeat");
+                Main main =new Main();
+                main.start(new Stage());
+                stage.hide();
+            }else{
+                System.out.println("寄");
+
+
+            }
         });
         stage.show();
+        
     }
 }
