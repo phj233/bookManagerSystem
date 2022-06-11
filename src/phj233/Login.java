@@ -50,8 +50,7 @@ public class Login extends Application {
         gr.add(clear,0,2);
         gr.add(login,1,2);
         GridPane.setMargin(login,new Insets(0,0,0,120));
-
-//        BorderPane root = new BorderPane();
+//      BorderPane root = new BorderPane();
         Scene scene = new Scene(gr,400,250);
         stage.setScene(scene);
         stage.setResizable(false);
@@ -76,7 +75,11 @@ public class Login extends Application {
             if (name.equals(t_name.getText()) && passwd.equals(p_passwd.getText())){
                 System.out.println("success");
                 Main main =new Main();
-                main.start(new Stage());
+                try {
+                    main.start(new Stage());
+                } catch (Exception e) {
+                    throw new RuntimeException(e);
+                }
                 stage.hide();
             }else{
                 System.out.println("寄");
